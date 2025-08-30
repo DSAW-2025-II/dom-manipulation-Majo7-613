@@ -2,6 +2,9 @@
 # María José Almanza Caviedes 
 ## 0000337693
 
+## Deployed Workspace 
+
+
 # Lista de Tareas
 
 Esta tarea consiste en crear una aplicación de lista de tareas utilizando HTML, CSS y JavaScript. La aplicación debe ser capaz de crear, eliminar y marcar tareas como completadas. Además, se espera que el diseño sea responsive y se adapte correctamente a las medidas de dispositivos móviles, tablets y desktops.
