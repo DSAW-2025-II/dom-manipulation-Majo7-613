@@ -1,13 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Mi TODO list</h1>
-    <script src="scripts/script.js"></script>
-  </body>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WORKSPACE</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+  <button id="toggleMode" class="ghost toggle-mode-btn" title="Cambiar modo">🌙</button>
+  <div class="workspace-landing active" id="landing">
+    <div class="workspace-title">WORKSPACE</div>
+    <div class="workspace-cards">
+      <div class="workspace-card" data-open="plan">
+        <span class="emoji">✅</span>
+        <span>TODO LIST</span>
+      </div>
+      <div class="workspace-card" data-open="toread">
+        <span class="emoji">📚</span>
+        <span>TO READ LIST</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN -->
+  <section id="plan" class="screen">
+    <div class="page-header">
+      <button class="ghost" id="backFromPlan">← Volver</button>
+      <h2>Todo List</h2>
+      <div class="page-actions">
+        <button id="addPlanBtn" class="primary-circle" aria-label="Añadir tarea">+</button>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="db-card">
+        <div class="db-controls">
+          <div class="db-pill">Todas las tareas</div>
+          <div class="db-actions">
+            <div class="dropdown">
+              <button class="ghost small" id="orderBtn">Ordenar ▼</button>
+              <div class="dropdown-content" id="orderMenu" style="display:none;">
+                <button class="ghost small" data-order="alpha">Alfabético</button>
+                <button class="ghost small" data-order="date">Por fecha</button>
+              </div>
+            </div>
+            <button class="ghost small" id="exportBtn">Exportar</button>
+          </div>
+        </div>
+        <table class="db-table" aria-label="Tabla de Plan">
+          <thead>
+            <tr>
+              <th class="col-title">Tarea</th>
+              <th class="col-date">Fecha límite</th>
+              <th class="col-done">Hecho</th>
+            </tr>
+          </thead>
+          <tbody id="planBody"></tbody>
+        </table>
+        <div class="progress-row">
+          <div class="progress-bar-bg"><div id="planProgress" class="progress-bar"></div></div>
+          <div id="planPercent" class="progress-percent">0%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TO-READ -->
+  <section id="toread" class="screen">
+    <div class="page-header">
+      <button class="ghost" id="backFromRead">← Volver</button>
+      <h2>To Read List</h2>
+      <div class="page-actions">
+        <button id="addReadBtn" class="primary-circle" aria-label="Añadir lectura">+</button>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="db-card">
+        <div class="db-controls">
+          <div class="db-pill">Artículos y libros</div>
+        </div>
+        <table class="db-table" aria-label="Tabla de Lecturas">
+          <thead>
+            <tr>
+              <th class="col-title">Nombre</th>
+              <th class="col-status">Estado</th>
+              <th class="col-actions">...</th>
+            </tr>
+          </thead>
+          <tbody id="readBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL (reutilizable) -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true">
+      <header class="modal-header">
+        <h3 id="modalTitle">Nueva fila</h3>
+        <button class="ghost" data-close>✕</button>
+      </header>
+      <form id="modalForm" class="modal-form"></form>
+      <footer class="modal-footer">
+        <button class="ghost" data-close>Cancelar</button>
+        <button id="modalSave" class="btn-primary">Guardar</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="scripts/main.js"></script>
+</body>
 </html>
